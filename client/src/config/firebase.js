@@ -4,13 +4,13 @@ import { getFirestore } from 'firebase/firestore';
 
 
 const config = {
-    apiKey: "AIzaSyCaTMLmtN5d-z76XRmLyn5Z9nQtxBqXM0M",
-    authDomain: "ghack-c764c.firebaseapp.com",
-    projectId: "ghack-c764c",
-    storageBucket: "ghack-c764c.appspot.com",
-    messagingSenderId: "1094108300028",
-    appId: "1:1094108300028:web:9c624862cc2e62df2f4d79",
-};
+    apiKey: "AIzaSyDiVZJLiREhc41F5c9FgOSzMMSlo61tnAM",
+    authDomain: "ghack-ad5ba.firebaseapp.com",
+    projectId: "ghack-ad5ba",
+    storageBucket: "ghack-ad5ba.appspot.com",
+    messagingSenderId: "446135334003",
+    appId: "1:446135334003:web:c5c4db57099e18d1dc2606"
+}
 
 const app = initializeApp(config);
 
