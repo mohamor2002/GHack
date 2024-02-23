@@ -4,8 +4,7 @@ import { useDispatch } from 'react-redux';
 import { FETCH_STATUS } from '../constants/fetchStatus';
 import SignUpWithGoogle from '../api/SignUpWithGoogle';
 import GoogleIcon from '@mui/icons-material/Google';
-import LogInWithEmailAndPassword from '../api/LogInWithEmailAndPassword';
-
+import LogInWithEmailAndPassword from '../api/logInWithEmailAndPassword';
 
 const SignIn = () => {
 

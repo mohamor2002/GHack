@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-async function LogInWithEmailAndPassword(e,setStatus,email,password){
+export default async function LogInWithEmailAndPassword(e,setStatus,email,password){
     e.preventDefault()
     try {
       setStatus(FETCH_STATUS.LOADING)
