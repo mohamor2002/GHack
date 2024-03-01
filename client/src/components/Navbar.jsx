@@ -9,7 +9,7 @@ const Navbar = () => {
     console.log(location)
     const options =['progress','courses','projects','practice','roussources']
   return (
-    <nav className=' flex w-full h-16 shadow-md justify-between items-center px-12 font-main'>
+    <nav className='flex w-full h-16 shadow-md justify-between items-center px-12 font-main bg-white'>
         <img src={logo} alt="" className=' w-16 aspect-square '/>
         <ul className=' flex w-[50%] bg-main-gray rounded-full h-12 items-center justify-around px-4 '>
             {
