@@ -1,7 +1,13 @@
+from django.contrib import admin
 from django.urls import path
 from backendapp import views
+from django.urls import include
+
 
 urlpatterns = [
-    path('companies/', views.get_ordered_companies, name='get_ordered_companies'),
-    # Add other URL patterns as needed
+    path('admin/', admin.site.urls),
+    path('', include('backendapp.urls')),
+    
+
+
 ]
