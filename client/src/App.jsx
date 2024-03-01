@@ -9,7 +9,7 @@ import SignUp from './pages/SignUp'
 import { useDispatch, useSelector } from 'react-redux'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './config/firebase'
-import { loginUser } from './redux/features/userSlice'
+import { loginUser, logoutUser } from './redux/features/userSlice'
 import getUserByUID from './api/getUserByUID'
 import Progress from './pages/Progress'
 
@@ -27,6 +27,9 @@ function App() {
           uid: usertmp.uid,
           username: usertmp.username,
         }))
+      }
+      else{
+        dispatch(logoutUser())
         }
       setPending(false)
       })
@@ -36,7 +39,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={!user?<SignUp/>:<Progress/>}>
+        <Route path='progress' element={!user?<SignUp/>:<Progress/>}>
+        </Route>
+        <Route path='courses' element={<Progress/>}>
+
         </Route>
         <Route path='signin' element={<SignIn/>}></Route>
       </Routes>
