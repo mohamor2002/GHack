@@ -26,5 +26,5 @@ class CompanySectorsList(generics.ListAPIView):
 
     def get_queryset(self):
         company_id = self.kwargs['company_id']
-        return Sector.objects.filter(sectorcompany__company_id=company_id)
+        return Sectors.objects.filter(sectorcompany__company_id=company_id)
 # Create your views here.
