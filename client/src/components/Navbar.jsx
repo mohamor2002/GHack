@@ -7,17 +7,17 @@ import SearchIcon from '@mui/icons-material/Search';
 const Navbar = () => {
     const location=useLocation()
     console.log(location)
-    const options =['progress','courses','projects','practice','roussources']
+    const options =['progress','courses','projects','practice','roussources','investment']
   return (
-    <nav className=' flex w-full h-16 shadow-md justify-between items-center px-12 font-main'>
+    <nav className=' flex w-full h-16 shadow-md justify-between items-center px-12 font-main bg-white'>
         <img src={logo} alt="" className=' w-16 aspect-square '/>
-        <ul className=' flex w-[50%] bg-main-gray rounded-full h-12 items-center justify-around px-4 '>
+        <ul className=' flex w-[60%] bg-main-gray rounded-full h-12 items-center justify-around px-4 '>
             {
                 options.map((e,index)=>(
                     <li key={index} className={`px-2 py-1`}>
                         <NavLink
                         to={`/${e}`}
-                        className={` ${`/${e}`===location.pathname?'text-white bg-black':'text-black'} rounded-full text-sm px-4 py-1 flex justify-center items-center capitalize`}
+                        className={` ${`/${e}`===location.pathname?'text-white bg-black':'text-black'} rounded-full text-xs px-4 py-1 flex justify-center items-center capitalize`}
                         >
                             <p>
                             {e}

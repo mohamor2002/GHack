@@ -114,6 +114,10 @@ class Resources(models.Model):
     utilisateur = models.ForeignKey(Utilisateurs, on_delete=models.CASCADE)
     articles = models.ManyToManyField(Articles)
     podcasts = models.ManyToManyField(Podcasts)
+class PodcastInteraction(models.Model):
+    user = models.ForeignKey(Utilisateurs, on_delete=models.CASCADE)
+    podcast = models.ForeignKey(Podcasts, on_delete=models.CASCADE)
+    liked = models.BooleanField(default=False)
 
 class Company(models.Model):
     id_company = models.AutoField(primary_key=True)
