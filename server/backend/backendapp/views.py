@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render
 from rest_framework import generics
-from .models import Company, Investment, Type, Sector, SectorCompany
+from .models import Company, Investment, Type, Sectors, SectorCompany
 from .serializers import CompanySerializer, InvestmentSerializer, TypeSerializer, SectorSerializer, SectorCompanySerializer
 
 class CompanyRetrieve(generics.RetrieveAPIView):
@@ -19,7 +19,7 @@ class TypeRetrieve(generics.RetrieveAPIView):
     serializer_class = TypeSerializer
 
 class SectorRetrieve(generics.RetrieveAPIView):
-    queryset = Sector.objects.all()
+    queryset = Sectors.objects.all()
     serializer_class = SectorSerializer
 class CompanySectorsList(generics.ListAPIView):
     serializer_class = SectorSerializer

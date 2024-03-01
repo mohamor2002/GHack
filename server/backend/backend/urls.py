@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-from django.urls import include
 """
 URL configuration for backend project.
 
@@ -17,17 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-=======
->>>>>>> 1b9ce73f2e3da6920eae1cbda02e1f0422dc63d2
 from django.urls import path
 from backendapp import views
+from django.urls import include
+
 
 urlpatterns = [
-<<<<<<< HEAD
     path('admin/', admin.site.urls),
     path('/', include('backendapp.urls')),
-=======
     #path('companies/', views.get_companies, name='get_companies'),
     # Add other URL patterns as needed
->>>>>>> 1b9ce73f2e3da6920eae1cbda02e1f0422dc63d2
+
 ]
