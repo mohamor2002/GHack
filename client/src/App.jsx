@@ -38,6 +38,8 @@ function App() {
   )
 
   return (
+   
+    
     <BrowserRouter>
       <Routes>
         <Route path='progress' element={!user?<SignUp/>:<Progress/>}></Route>
@@ -49,4 +51,4 @@ function App() {
   )
 }
 
-export default App
+export default App  
