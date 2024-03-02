@@ -4,10 +4,12 @@ from .models import Investment
 from .serializers import InvestmentSerializer
 from rest_framework.views import APIView
 from . import services
+from django.db import models
+
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.db.models import Count
-from .models import Utilisateurs, Courses, Articles, Investment
+from .models import Utilisateurs, Courses, Articles, Investment,EvaluationArticle
 
 class InvestmentListView(generics.ListAPIView):
     serializer_class = InvestmentSerializer
@@ -33,38 +35,36 @@ class SeedView(APIView):
             return Response({"message":"success"})
 
 
-from django.db.models import Count
 from django.http import JsonResponse
-from .models import Utilisateurs, Portfolio, Articles, Investment, Type, Sectors, SectorCompany
+from django.db.models import Q
+from .models import Utilisateurs, Articles, Investment
 
-def ordered_investments(request):
-    user_id = request.user.id  # Assuming you have user authentication
-    completed_courses = Portfolio.objects.filter(utilisateur_id=user_id)
+def user_liked_articles_investments(request, user_id=1):
+    # Assuming you have the user ID passed in the URL
 
-    # Retrieve the articles rated by the user
-    rated_articles = Articles.objects.filter(evaluationarticle__user_id=user_id)
+    # Retrieve the user's liked articles
+    liked_articles = Articles.objects.filter(evaluationarticle__user_id=user_id, evaluationarticle__rating__gt=3)
 
-    # Extract sectors and types from completed courses and rated articles
-    sectors = completed_courses.values_list('utilisateur__projectscore__project__sectors__name_sector', flat=True)
-    types = completed_courses.values_list('utilisateur__projectscore__project__type__name_type', flat=True)
-    types = types.union(rated_articles.values_list('type__name_type', flat=True))
+    # Extract company names mentioned in the liked articles
+    company_names = set()
+    for article in liked_articles:
+        company_names.update(article.content.split())  # Assuming company names are mentioned in the content
 
-    # Find investments with shared sectors and types
-    investments = Investment.objects.filter(company__sectors__name_sector__in=sectors,
-                                             type__name_type__in=types).annotate(
-        num_shared_sectors=Count('company__sectors__name_sector'),
-        num_shared_types=Count('type__name_type')
-    ).order_by('-num_shared_sectors', '-num_shared_types')
+    # Fetch investments related to these companies along with their types and sectors
+    investments = Investment.objects.filter(company__company_name__in=company_names)\
+        .select_related('company', 'type')\
+        .prefetch_related('company__sectorcompany_set__name_sector')
 
-    # Serialize the investment data or process it further as needed
-    investment_data = []
+    # Prepare the response data
+    response_data = []
     for investment in investments:
-        # Serialize each investment as needed
-        investment_data.append({
+        response_data.append({
             'company_name': investment.company.company_name,
             'valuation': investment.valuation,
             'equity_offered': investment.equity_offered,
-            # Add other fields as needed
+            'pitch': investment.pitch,
+            'type': investment.type.name_type,
+            'sectors': [sector.name_sector for sector in investment.company.sectorcompany_set.all()]
         })
 
-    return JsonResponse({'investments': investment_data})
+    return JsonResponse({'investments': response_data})
