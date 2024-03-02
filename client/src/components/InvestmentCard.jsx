@@ -44,9 +44,9 @@ const InvestmentCard = ({title,description,valuation,investors,target,keywords})
                 <p>Read More</p>
             </button>
             <div className=' w-full h-[1px] bg-main-blue my-2'></div>
-            <div className=' flex space-x-2 font-medium mb-2'>
+            <div className=' flex flex-wrap font-medium'>
                 {
-                    keywords.map((k)=><div className=' bg-gray-200 px-4 py-1 rounded-full text-xs'>{k}</div>
+                    keywords.map((k)=><div className=' bg-gray-200 px-4 py-1 rounded-full text-xs mr-2 mb-2'>{k}</div>
                     )
                 }
                

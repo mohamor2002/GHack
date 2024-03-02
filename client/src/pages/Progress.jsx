@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux'
 import BoltIcon from '@mui/icons-material/Bolt';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import couresimage from '../assets/courses.svg';
-import analytics from '../assets/analytics.svg'
+import analytics from '../assets/analytics.svg';
+import ProjectCard from '../components/ProjectCard';
 import { NavLink } from 'react-router-dom';
 
 const Progress = () => {
@@ -150,7 +151,7 @@ const Progress = () => {
              <div className='w-full h-full border-solid border-main-blue border-t-2 border-opacity-60 mb-7'></div>
              <div className='flex justify-between '>
 
-                   <img src={couresimage} alt="" className='w-[10%] '/>
+                   <img src={couresimage} alt="" className='w-[20%]  '/>
                    <div className=' m-2 p-2 w-[35%] flex flex-col justify-around bg-white cursor-pointer shadow-md transition duration-300 ease-in-out hover:shadow-lg'>
                         <h1 className='font-bold mb-2'>Finance Fundamentals </h1>
                         <p className="overflow-hidden whitespace-normal line-clamp-4 mb-3 font-light">
@@ -219,6 +220,8 @@ const Progress = () => {
       Advance your financial management proficiency through 'No Cash Flow,' delving into strategies for navigating challenges 
   </p>
 </div>
+  
+
 
                     
 
@@ -228,9 +231,9 @@ const Progress = () => {
 
                    
 
-
+  
                    
-             </div>
+  </div>
         </div>
         
         
