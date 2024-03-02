@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 const Navbar = () => {
     const location=useLocation()
     console.log(location)
-    const options =['progress','courses','projects','practice','roussources','investment']
+    const options =['progress','courses','projects','practice','resources','investment']
   return (
     <nav className=' flex w-full h-16 shadow-md justify-between items-center px-12 font-main bg-white'>
         <img src={logo} alt="" className=' w-16 aspect-square '/>
