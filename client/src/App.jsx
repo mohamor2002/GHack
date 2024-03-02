@@ -13,7 +13,6 @@ import { loginUser, logoutUser } from './redux/features/userSlice'
 import getUserByUID from './api/getUserByUID'
 import Progress from './pages/Progress'
 import Investment from './pages/Investment'
-import Resources from './pages/Resources'
 
 function App() {
   const user=useSelector(state=>state.data.user.user)
@@ -38,19 +37,15 @@ function App() {
     },[]
   )
 
-  return (
-   
-    
+  return (  
     <BrowserRouter>
       <Routes>
         <Route path='progress' element={!user?<SignUp/>:<Progress/>}></Route>
         <Route path='courses' element={<Progress/>}></Route>
         <Route path='signin' element={<SignIn/>}></Route>
         <Route path='investment' element={<Investment/>}></Route>
-        <Route path='resources' element={<Resources/>}></Route>
       </Routes>
     </BrowserRouter>
   )
 }
-
 export default App  
