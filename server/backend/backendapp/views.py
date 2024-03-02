@@ -6,6 +6,7 @@ from .models import Company, Investment, Type, Sectors, SectorCompany, Podcasts,
 from django.views.generic import View
 from .utils import generateArticle, generatePodcast
 from rest_framework.decorators import api_view
+from datetime import datetime
 
 
 from .serializers import CompanySerializer, InvestmentSerializer, TypeSerializer, SectorSerializer, SectorCompanySerializer
@@ -91,24 +92,26 @@ def generate_podcast_and_save(request,topic):
     # Generate podcast content
     podcast_content = generatePodcast(request,topic)
 
+
     # Save podcast to the database
     podcast = Podcasts.objects.create(
         title=podcast_content['title'],
         description=podcast_content['description'],
-        topic=podcast_content['topic'],
-        date_created=podcast_content['date_created'],
-        duration=podcast_content['duration'],
+        topic=topic,
+        date_created= datetime.now(),
+        duration=15,
         content=podcast_content['content']
     )
 
     # Return the saved podcast data
     podcast_data = {
-        'id': podcast.id,
+        'id': podcast.podcast_id,
         'title': podcast.title,
         'description': podcast.description,
         'topic': podcast.topic,
         'date_created': podcast.date_created,
         'duration': podcast.duration,
+        'content':podcast.content
         # Add other fields as needed
     }
 

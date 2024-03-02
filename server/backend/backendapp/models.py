@@ -92,7 +92,7 @@ class Podcasts(models.Model):
     topic = models.CharField(max_length=255, null=False)
     date_created = models.DateTimeField(null=False)
     duration = models.IntegerField()
-    content = models.BinaryField(null=False)
+    content = models.CharField(max_length=255)
 
 class Articles(models.Model):
     article_id = models.AutoField(primary_key=True)
