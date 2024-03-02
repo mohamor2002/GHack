@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ArticleCard = ({title,description,keywords}) => {
+const PodcastCard = ({title,description,keywords}) => {
   return (
     <div className=' font-main md:w-[23rem] h-[30rem] flex flex-col bg-white px-6 shadow-lg py-4'>
         <div className=' flex-1 flex flex-col justify-between '>
@@ -13,7 +13,7 @@ const ArticleCard = ({title,description,keywords}) => {
             </div>
             
             <button className=' w-full bg-main-blue h-10 rounded-md text-white font-medium mt-4'>
-                <p>Read More</p>
+                <p>Play Podcast</p>
             </button>
             <div className=' w-full h-[1px] bg-main-blue'></div>
             <div className=' flex flex-wrap font-medium'>
@@ -27,4 +27,4 @@ const ArticleCard = ({title,description,keywords}) => {
   )
 }
 
-export default ArticleCard
+export default PodcastCard

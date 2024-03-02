@@ -28,6 +28,7 @@ const Progress = () => {
   return (
     <div className=' w-full bg-main-gray'>
         <Navbar></Navbar>
+        
         <div className=' mb-20 flex flex-col items-center pt-12 bg-main-gray font-main'>
             <div className=' w-[80%] bg-white shadow-md p-12 '>
                 <div className='flex w-full items-center justify-between'>

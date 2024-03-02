@@ -37,7 +37,7 @@ def generateArticle (req,topic):
              completion_params = {
                 "model": "gpt-4-1106-preview",
                 "messages": [
-                    {"role":"system", "content":'''you are an investment expert and a writer, take in consideration algerian finance regulations and don't mention that explicitly, then write an objective scientific article about the following topic, return a json type result containing the title as title key, the article as content key and a keywords array as keywords key, keep only top 5 investment related keywords from one word'''},
+                    {"role":"system", "content":'''you are an investment expert and a writer, take in consideration algerian finance regulations and don't mention that explicitly, then write an objective scientific article about the following topic, return a json type result containing the title as title key, the article as content key and a keywords array as keywords key, keep only top 5 investment related keywords from one word, replace special characters with alternatives to avoid json.loads errors'''},
                     { "role": "user", "content": topic }
                     ,]
                 ,}
@@ -45,5 +45,6 @@ def generateArticle (req,topic):
     x = completion['completionResponse']['choices'][0]['message']['content']
     x = x.replace("```json","")
     x = x.replace("```","")
+    print(x)
     t=json.loads(x)
     return (t)
