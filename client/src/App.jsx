@@ -14,6 +14,7 @@ import getUserByUID from './api/getUserByUID'
 import Progress from './pages/Progress'
 import Investment from './pages/Investment'
 import Projects from './pages/Projects'
+import Practice from './pages/Practice'
 
 function App() {
   const user=useSelector(state=>state.data.user.user)
@@ -48,6 +49,7 @@ function App() {
         <Route path='signin' element={<SignIn/>}></Route>
         <Route path='investment' element={<Investment/>}></Route>
         <Route path='projects' element={<Projects/>}></Route>
+        <Route path='practice' element={<Practice/>}></Route>
       </Routes>
     </BrowserRouter>
   )
