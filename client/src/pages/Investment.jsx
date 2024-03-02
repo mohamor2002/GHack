@@ -33,7 +33,7 @@ const Investment = () => {
   return (
     <div className=' w-full bg-main-gray'>
          <Navbar></Navbar>
-         <h1 className='mt-12 mb-2 px-16 text-lg font-bold'>Featured Companies</h1>
+         <h1 className='mt-6 mb-2 px-16 text-lg font-bold'>Featured Companies</h1>
          <div className=' grid grid-cols-3 gap-y-4 px-16 '>
             {
                 investmentOffers.map((a)=><InvestmentCard title={a.title} description={a.description} valuation={a.valuation} investors={a.investors} target={a.target} keywords={a.keywords} />       

@@ -15,6 +15,8 @@ import Progress from './pages/Progress'
 import Investment from './pages/Investment'
 import Projects from './pages/Projects'
 import Practice from './pages/Practice'
+import Resources from './pages/Resources'
+import InvestDetail from './pages/InvestDetails'
 
 function App() {
   const user=useSelector(state=>state.data.user.user)
@@ -48,6 +50,8 @@ function App() {
         <Route path='investment' element={<Investment/>}></Route>
         <Route path='projects' element={<Projects/>}></Route>
         <Route path='practice' element={<Practice/>}></Route>
+        <Route path='resources' element={<Resources/>}></Route>
+        <Route path='investment/:id' element={<InvestDetail/>}></Route>
       </Routes>
     </BrowserRouter>
   )

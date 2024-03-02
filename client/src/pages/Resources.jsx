@@ -6,7 +6,7 @@ const Resources = () => {
   return (
     <div className=' '>
         <Navbar></Navbar>
-
+        <ArticleCard  />
     </div>
   )
 }

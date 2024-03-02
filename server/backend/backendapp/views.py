@@ -65,19 +65,18 @@ class CompanyListBySector(View):
             })
         return JsonResponse(data, safe=False)
 @api_view(['POST'])
-def generate_article_and_save(request):
+def generate_article_and_save(request,topic):
     # Generate article content using your generateArticle function
-    article_content = generateArticle()
+    article_content = generateArticle(request,topic)
 
     # Save the generated article to the database
     article = Articles.objects.create(
         title=article_content['title'],
         description=article_content['description'],
-        topic=article_content['topic'],
-        date_created=article_content['date_created'],
+        topic=topic,
+        date_created=datetime.now(),
         content=article_content['content']
     )
-
     # Return the saved article data in JSON format
     return JsonResponse({
         'article_id': article.article_id,
@@ -102,7 +101,6 @@ def generate_podcast_and_save(request,topic):
         duration=15,
         content=podcast_content['content']
     )
-
     # Return the saved podcast data
     podcast_data = {
         'id': podcast.podcast_id,
